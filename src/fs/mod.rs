@@ -13,14 +13,7 @@
 #![allow(clippy::collapsible_match)]
 #![allow(clippy::unnecessary_lazy_evaluations)]
 
-// SigmaOS Filesystem Module
-// Virtual filesystem, journaling filesystems (Btrfs, XFS), storage, and VFS file management support
-
-pub mod btrfs;
-pub mod sigmacas;
-pub mod sigmafs;
-pub mod xfs;
-
+// SigmaOS Filesystem Module — VFS primitives
 pub mod fd;
 pub mod fd_table;
 pub mod inode;
@@ -40,38 +33,6 @@ pub use directory::{Directory, DirectoryEntry, MAX_DIR_ENTRIES, MAX_FILENAME_LEN
 pub use permission::{AccessMode, PermissionEngine, ProcessCredentials, CAP_DAC_OVERRIDE, CAP_DAC_READ_SEARCH, CAP_FOWNER};
 pub use flock::{FileLockManager, FileRangeLock, LockType, F_RDLCK, F_UNLCK, F_WRLCK, LOCK_EX, LOCK_NB, LOCK_SH, LOCK_UN};
 
-pub use btrfs::{
-    BtrfsExtent, BtrfsFilesystem, BtrfsSnapshot, BtrfsSubvolume, ChecksumType, CompressionType,
-};
 pub use cache::{
     BlockCacheManager, CacheError, CacheOomMetrics, CachePage, CachePageState, WatermarkLevel,
 };
-pub use sigmacas::{CasBlock, SigmaFsCasEngine, DILITHIUM5_SIGNATURE_SIZE, SHA256_HASH_SIZE};
-pub use sigmafs::{
-    AhciSataController, BlockStorageDevice, BlockStorageError, JournalBlock, JournalBlockType,
-    MerkleNode, NvmeStorageController, SigmaFs, TransactionalJournal,
-};
-pub use xfs::{
-    AllocationStrategy, XfsAllocationGroup, XfsExtent, XfsFilesystem, XfsInode, XfsJournal,
-    XfsState,
-};
-
-pub mod bcachefs_sovereign;
-pub use bcachefs_sovereign::{
-    sovereign_crc32c, BcachefsExtent, BcachefsInode, BcachefsSnapshot, ChecksumAlgorithm,
-    SovereignBcachefsVolume,
-};
-
-pub mod overlayfs_sovereign;
-pub use overlayfs_sovereign::{OverlayEntry, OverlayEntryKind, OverlayLayer, SovereignOverlayFs};
-
-pub mod zfs_arc_sovereign;
-pub use zfs_arc_sovereign::{ArcBufferHeader, SovereignZfsArc};
-
-pub mod fanotify_sovereign;
-pub use fanotify_sovereign::{
-    FanotifyEvent, FanotifyEventKind, FanotifyMark, FanotifyResponse, SovereignFanotifyGroup,
-};
-
-pub mod fscrypt_sovereign;
-pub use fscrypt_sovereign::*;
