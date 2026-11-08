@@ -2,11 +2,9 @@
 name = "sigmaos_filesystem"
 version = "0.1.0"
 edition = "2021"
-description = "SigmaOS filesystem model: VFS, inodes, dentry, mount table, file descriptors, permissions"
+license = "MIT"
+description = "SigmaOS filesystem component inspired by Linux Mint / Omarchy / Arch Linux."
 
 [lib]
 name = "sigmaos_filesystem"
 path = "src/lib.rs"
-
-[dependencies]
-bitflags = "2.5"
