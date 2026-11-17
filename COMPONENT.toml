@@ -3,7 +3,7 @@ name = "SigmaOS-filesystem"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "SigmaOS SigmaOS-filesystem component"
+description = "filesystem component"
 upstream = []
 
 [contract]
