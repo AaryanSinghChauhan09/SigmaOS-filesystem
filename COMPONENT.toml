@@ -3,12 +3,12 @@ name = "SigmaOS-filesystem"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "filesystem component"
+description = "Virtual filesystem layer, journaling & zero-copy paths"
 upstream = []
 
 [contract]
 provides = ["component"]
-depends_on = []
+depends_on = ["SigmaOS-kernel"]
 
 [maturity]
 status = "Scaffold"
